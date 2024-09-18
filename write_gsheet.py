@@ -12,5 +12,4 @@ df = conn.read(
 )
 
 # Print results.
-for row in df.itertuples():
-    st.write(row)
+st.dataframe(df)
