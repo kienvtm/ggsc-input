@@ -60,8 +60,8 @@ def load_data(sh, sheet_name="Sheet1"):
 
 key = '1EDxslX9zP0UV2ntj0RE9fb-o6uZaSodkW_e9b0nV5uQ'
 sheet_name='Sheet1'
-df = load_data(key, sheet_name='Sheet1')
 sh = connect_gsheet(key)
+df = load_data(sh, sheet_name='Sheet1')
 st.dataframe(df)
 
 
