@@ -11,3 +11,11 @@ df = conn.read(
 
 # Print results.
 st.dataframe(df)
+
+if st.button("Update worksheet"):
+    df = conn.update(
+        worksheet="Example 1",
+        data=df,
+    )
+    st.cache_data.clear()
+    st.rerun()
