@@ -15,7 +15,7 @@ if "rows" not in st.session_state:
 def add_row():
     st.session_state["rows"].append(
         {
-            "MST":mst,
+            "MST":'',
             "Date": datetime.now().date(), 
             "Item Code": "", 
             "Item Name": "", 
