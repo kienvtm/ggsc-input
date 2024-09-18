@@ -36,7 +36,6 @@ credentials = Credentials.from_service_account_info(
     skey,
     scopes=scopes,
 )
-client = gspread.authorize(credentials)
 
 
 # Find the first non-blank row by checking the length of the sheet
@@ -48,9 +47,8 @@ def get_first_empty_row(worksheet):
 # Perform SQL query on the Google Sheet.
 # Uses st.cache_data to only rerun when the query changes or after 10 min.
 # @st.cache_resource 
-def connect_gsheet(key):
-    sh = client.open_by_key(key)
-    return sh
+# def connect_gsheet(key):
+#     return sh
 
 @st.cache_data(ttl=600)
 def load_data(sh, sheet_name="Sheet1"):
@@ -60,7 +58,9 @@ def load_data(sh, sheet_name="Sheet1"):
 
 key = '1EDxslX9zP0UV2ntj0RE9fb-o6uZaSodkW_e9b0nV5uQ'
 sheet_name='Sheet1'
-sh = connect_gsheet(key)
+client = gspread.authorize(credentials)
+sh = client.open_by_key(key)
+# sh = connect_gsheet(key)
 df = load_data(sh, sheet_name='Sheet1')
 st.dataframe(df)
 
