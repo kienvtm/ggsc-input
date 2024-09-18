@@ -47,7 +47,7 @@ def get_first_empty_row(worksheet):
 
 # Perform SQL query on the Google Sheet.
 # Uses st.cache_data to only rerun when the query changes or after 10 min.
-@st.cache_resource 
+# @st.cache_resource 
 def connect_gsheet(key):
     sh = client.open_by_key(key)
     return sh
