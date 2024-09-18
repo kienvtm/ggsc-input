@@ -48,6 +48,8 @@ def load_data(key, sheet_name="Sheet1"):
 
 def update_data(worksheet, df):
     # Find the first non-blank row by checking the length of the sheet
+    sh = client.open_by_key(key)
+    worksheet = sh.worksheet(worksheet)
     str_list = list(filter(None, worksheet.col_values(1)))
     first_empty_row = len(str_list) + 1
     set_with_dataframe(worksheet, df, row=first_empty_row, col=1, include_index=False, include_column_header=False)
